@@ -1,17 +1,14 @@
 
 from flask import Flask, render_template
 
+from todo.db import TodoDB
+
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    todo = [
-        "测试一",
-        "测试二",
-        "测试三",
-        "测试四",
-        "测试五"
-    ]
+    db = TodoDB()
+    todo = db.read_all()
     return render_template('index.html', data=todo)
 
 if __name__ == '__main__':
