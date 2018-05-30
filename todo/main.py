@@ -11,5 +11,11 @@ def index():
     todo = db.read_all()
     return render_template('index.html', data=todo)
 
+@app.route('/todo/<int:todo_id>', methods=['DELETE'])
+def delete(todo_id):
+    db = TodoDB()
+    todo = db.delete(todo_id)
+    return 'okay'
+
 if __name__ == '__main__':
     app.run(debug=True)
