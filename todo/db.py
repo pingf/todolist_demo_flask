@@ -7,11 +7,11 @@ class TodoDB:
         cursor = conn.cursor()
         # 执行一条SQL语句，创建user表:
         # insert into todo(content) values ('test1');
-        cursor = cursor.execute('select content from todo')
+        cursor = cursor.execute('select id, content from todo')
         data = cursor.fetchall()
         cursor.close()
         conn.close()
-        data = [d[0] for d in data]
+        # data = [d[0] for d in data]
         return data
 
     def init_db(self):

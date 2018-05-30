@@ -8,9 +8,14 @@
 
     <ul>
     {% for value in data %}
-        <li>{{ value }} </li>
+        <li>{{ value[1] }} <button onclick="myFunction({{ value[0] }})"> 删除 </button></li>
     {% endfor %}
     </ul>
 
+    <script>
+        function myFunction(index) {
+            console.log("hello world", index)
+        }
+    </script>
 </body>
 </html>
