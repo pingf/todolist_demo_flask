@@ -50,4 +50,3 @@ if __name__ == '__main__':
     db = TodoDB()
     db.read_all()
 
-    # select * from todo;
