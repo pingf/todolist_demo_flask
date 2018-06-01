@@ -35,6 +35,13 @@ class TodoDB:
         self.commit()
         return
 
+    def read(self, todo_id):
+        cursor = self.cursor()
+        cursor = cursor.execute('select id,content from todo where id= ?', (todo_id, ))
+        data = cursor.fetchone()
+        cursor.close()
+        return data
+
     def init_db(self):
         conn = sqlite3.connect('test.db')
         cursor = conn.cursor()
@@ -45,8 +52,8 @@ class TodoDB:
 
 
 
-
 if __name__ == '__main__':
     db = TodoDB()
-    db.read_all()
+    result = db.read(15)
+    print(result)
 
