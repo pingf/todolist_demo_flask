@@ -50,6 +50,11 @@ class TodoDB:
         conn.commit()
         conn.close()
 
+    def create(self, text):
+        cursor = self.cursor()
+        cursor = cursor.execute('insert into todo(content) values (?)', (text, ))
+        cursor.close()
+        self.commit()
 
 
 if __name__ == '__main__':

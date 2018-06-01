@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, redirect, jsonify
+from flask import Flask, render_template, redirect, jsonify, request
 
 from todo.db import TodoDB
 
@@ -23,7 +23,10 @@ def delete(todo_id):
 
 @app.route('/todo', methods=['POST'])
 def add():
-    print('add todo item')
+    data = request.get_json()
+    db = TodoDB()
+    todo = db.create(data['text'])
+    db.close()
     return 'okay'
 
 if __name__ == '__main__':
