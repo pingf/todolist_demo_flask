@@ -6,13 +6,17 @@
 </head>
 <body>
 
-    <button>新增待办事项</button>
+    <button onclick="showDialog()">新增待办事项</button>
+    <dialog id="newTodoItem">
+      <p>Greetings, one and all!</p>
+        <button onclick="hideDialog()">取消</button>
+        <button>确定</button>
+    </dialog>
     <ul>
     {% for value in data %}
         <li>{{ value[1] }} <button onclick="deleteTodo({{ value[0] }})"> 删除 </button></li>
     {% endfor %}
     </ul>
-
     <script>
         function deleteTodo(index) {
             console.log("deleting: ", index);
@@ -27,6 +31,12 @@
                        window.location.reload();
                     }
                 )
+        }
+        function showDialog() {
+            document.getElementById('newTodoItem').showModal()
+        }
+        function hideDialog() {
+            document.getElementById('newTodoItem').close();
         }
     </script>
 </body>
