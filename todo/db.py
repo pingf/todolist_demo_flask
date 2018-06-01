@@ -23,7 +23,7 @@ class TodoDB:
 
     def read_all(self):
         cursor = self.cursor()
-        cursor = cursor.execute('select id, content from todo')
+        cursor = cursor.execute('select id, content from todo order by id desc')
         data = cursor.fetchall()
         cursor.close()
         return data
