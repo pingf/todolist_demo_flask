@@ -20,5 +20,11 @@ def delete(todo_id):
     db.close()
     return jsonify({ 'existed': True}) if result else \
         jsonify({ 'existed': False})
+
+@app.route('/todo', methods=['POST'])
+def add():
+    print('add todo item')
+    return 'okay'
+
 if __name__ == '__main__':
     app.run(debug=True)
